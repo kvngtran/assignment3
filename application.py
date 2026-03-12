@@ -130,7 +130,7 @@ class UserCity(Base):
             'weather_params': self.weather_params
         }
 
-## Admin REST API
+
 @app.route("/admin", methods=['POST'])
 def add_admin():
     app.logger.info("Inside add_admin")
@@ -358,7 +358,7 @@ def add_user_city(user_id):
         return Response("Year needs to be exactly four digits.\n", status=400)
 
     month = data['month']
-    params = data['params']
+    params = data['weather_params']
 
     user_city = UserCity(userId=user_id, cityId=city.id, month=month, year=year, weather_params=params)
     db_session.add(user_city)
